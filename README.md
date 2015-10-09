@@ -23,3 +23,18 @@ A new button should appear on the lefthand side of your story options, next to t
   - Existing content will be pushed to the bottom of the description
 - Description content matches template
   - Alert will say that template was not applied because the content matched the template
+
+### Features Roadmap
+-----
+
+- Story type detection
+  - altering templates based on story type (e.g. feature, bug, chore)
+- Template selections popup
+  - Clicking extension icon will allow default template switching
+- Custom template creation
+- Automatic tagging based on template completion
+
+### Attribution
+-----
+
+This extension heavily borrows from the [StoryScrip Chrome Extension](https://chrome.google.com/webstore/detail/storyscrip/hbkfmblkcllhmmambkpoieimkmjamhdg?hl=en), which at the time of this posting does not allow for modification of the story description template.
