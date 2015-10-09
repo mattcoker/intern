@@ -29,7 +29,7 @@ chrome.extension.sendMessage({}, function(response) {
               textArea = nextSection.find('.editor.tracker_markup.description'),
               existingData = textArea.val(),
               ev = new jQuery.Event('keyup'),
-              markdown = "### Context\n---\n\n*Include circumstantial details for this story here*\n\n### How To Demo\n---\n\n1. *Start your demo here*\n\n### Implementation Details\n---\n\n*Include technical details or considerations here*\n\n### Design/UX Details\n---\n\n*Include design details or considerations here*\n\n";
+              markdown = "### Context\n---\n\n*Include background details for this story here*\n\n### How To Demo\n---\n\n1. *Start your demo here*\n\n### Implementation Details\n---\n\n*Include technical details or considerations here*\n\n### Design/UX Details\n---\n\n*Include design details or considerations here*\n\n";
           ev.which = 13;
           ev.keyCode = 13;
           nextSection.find('.rendered_description').trigger('click');
