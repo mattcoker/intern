@@ -22,7 +22,7 @@ function generateStory(e) {
   var nextSection = $('.story_template').parents('.model_details').eq(0).next(),
       textArea = nextSection.find('.editor.tracker_markup.description'),
       existingData = textArea.val(),
-      ev = new jQuery.Event('keyup');
+      ev = new jQuery.Event('keyup'); // jshint ignore:line
 
   ev.which = 13;
   ev.keyCode = 13;
