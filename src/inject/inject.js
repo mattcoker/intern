@@ -4,7 +4,7 @@ function checkForEditBar() {
       ed = document.querySelector('.edit .controls');
 
   if (!ed) { return; }
-  //if ($(ed).find('.story_template').length) { return; }
+  if ($(ed).find('.story_template').length) { return; }
 
   ed.style.width = '311px';
   btn.className = 'left_endcap hoverable story_template';
