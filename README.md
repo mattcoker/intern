@@ -15,7 +15,9 @@ You may need to refresh any currently open Pivotal Tracker windows. In the futur
 ### Usage
 -----
 
-A new button should appear on the lefthand side of your story options, next to the "Clone Story" button. Below is a list of the expected behavior in several scenarios:
+A new button should appear on the lefthand side of your story options, next to the "Clone Story" button. Different templates will be applied based on the currently selected story type.
+
+Below is a list of the expected behavior in several scenarios:
 - Description is empty
   - Template will be applied
 - Description has content
@@ -24,11 +26,9 @@ A new button should appear on the lefthand side of your story options, next to t
 - Description content matches template
   - Alert will say that template was not applied because the content matched the template
 
-### Features Roadmap
+### Roadmap
 -----
 
-- Story type detection
-  - altering templates based on story type (e.g. feature, bug, chore)
 - Template selections popup
   - Clicking extension icon will allow default template switching
 - Custom template creation
