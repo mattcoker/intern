@@ -18,21 +18,67 @@ function checkForEditBar() {
   btn.addEventListener('click', generateStory, true);
 }
 
+function createFeatureTemplate() {
+  var context    = '### Context\n---\n\n*Include background details for this story here*\n\n',
+      htd        = '### How To Demo\n---\n\n1. *Start your demo here*\n\n',
+      impDetails = '### Implementation Details\n---\n\n*Include technical details or considerations here*\n\n',
+      uxDetails  = '### Design/UX Details\n---\n\n*Include design details or considerations here*\n\n';
+
+  return context + htd + impDetails + uxDetails;
+}
+
+function createBugTemplate() {
+  var context    = '### Context\n---\n\n*Include background details for this story here*\n\n',
+      htd        = '### How To Demo\n---\n\n1. *Start your demo here*\n\n',
+      htr        = '### How To Replicate\n---\n\n1. *Start your replication process here*\n\n',
+      outcomes   = '**Actual outcome**\n\n**Expected outcome**\n\n',
+      impDetails = '### Implementation Details\n---\n\n*Include technical details or considerations here*\n\n';
+
+  return context + htd + htr + outcomes + impDetails;
+}
+
+function createChoreTemplate() {
+  var context    = '### Context\n---\n\n*Include background details for this story here*\n\n',
+      questions    = '### Questions\n---\n\n*Add questions here*\n\n',
+      impDetails = '### Implementation Details\n---\n\n*Include technical details or considerations here*\n\n';
+
+  return context + questions + impDetails;
+}
+
+function createReleaseTemplate() {
+  // Currently, we have no need for a description
+  // tempalate on release stories
+  return "";
+}
+
 function generateStory(e) {
   var nextSection = $('.story_template').parents('.model_details').eq(0).next(),
       textArea = nextSection.find('.editor.tracker_markup.description'),
       existingData = textArea.val(),
-      ev = new jQuery.Event('keyup'); // jshint ignore:line
+      ev = new jQuery.Event('keyup'), // jshint ignore:line
+      markdown;
 
   ev.which = 13;
   ev.keyCode = 13;
 
-  var context    = '### Context\n---\n\n*Include background details for this story here*\n\n',
-      htd        = '### How To Demo\n---\n\n1. *Start your demo here*\n\n',
-      impDetails = '### Implementation Details\n---\n\n*Include technical details or considerations here*\n\n',
-      uxDetails  = '### Design/UX Details\n---\n\n*Include design details or considerations here*\n\n',
-      origContent = '\n\n### Original Content\n---\n\n' + existingData,
-      markdown = context + htd + impDetails + uxDetails;
+  switch ($('input[name="story[story_type]"]').val()) {
+    case 'feature':
+      markdown = createFeatureTemplate();
+      break;
+    case 'bug':
+      markdown = createBugTemplate();
+      break;
+    case 'chore':
+      markdown = createChoreTemplate();
+      break;
+    case 'release':
+      markdown = createReleaseTemplate();
+      break;
+    default:
+      markdown = createFeatureTemplate();
+  }
+
+  origContent = '\n\n### Original Content\n---\n\n' + existingData,
 
   nextSection.find('.rendered_description').trigger('click');
   if (textArea.val()) {
