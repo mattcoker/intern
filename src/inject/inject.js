@@ -29,12 +29,11 @@ function createFeatureTemplate() {
 
 function createBugTemplate() {
   var context    = '### Context\n---\n\n*Include background details for this story here*\n\n',
-      htd        = '### How To Demo\n---\n\n1. *Start your demo here*\n\n',
       htr        = '### How To Replicate\n---\n\n1. *Start your replication process here*\n\n',
-      outcomes   = '**Actual outcome**\n\n**Expected outcome**\n\n',
+      outcomes   = '**Present outcome**\n\n**Expected outcome**\n\n',
       impDetails = '### Implementation Details\n---\n\n*Include technical details or considerations here*\n\n';
 
-  return context + htd + htr + outcomes + impDetails;
+  return context + htr + outcomes + impDetails;
 }
 
 function createChoreTemplate() {
