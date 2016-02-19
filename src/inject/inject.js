@@ -1,7 +1,6 @@
 function checkForEditBar() {
   var cS = document.querySelector('.clone_story'),
       templateBtn = document.createElement('button'),
-      coffeeBtn = document.createElement('button'),
       ed = document.querySelector('.edit .controls'),
       tasksHeader = document.querySelector('.edit .tasks_index h4');
 
@@ -26,14 +25,6 @@ function checkForEditBar() {
   templateBtn.querySelector('img').style.marginTop = '1px';
   templateBtn.addEventListener('click', generateStory, true);
 
-  coffeeBtn.className = 'capped hoverable coffee_action';
-  coffeeBtn.title = 'Add a cup of coffee to this story';
-  coffeeBtn.innerHTML = '<img src="//i.imgur.com/qvQ83UA.png">';
-  cS.insertAdjacentElement('beforebegin', coffeeBtn);
-
-  coffeeBtn.querySelector('img').style.marginLeft = '-2px';
-  coffeeBtn.querySelector('img').style.marginTop = '1px';
-  coffeeBtn.addEventListener('click', incrementCoffeeCount, true);
 }
 
 function generateTasks(e) {
@@ -50,43 +41,6 @@ function generateTasks(e) {
     document.querySelector('.edit .tasks_new button').click();
   }
 
-}
-
-function incrementCoffeeCount(e) {
-  var nextSection = $('.story_template').parents('.model_details').eq(0).next(),
-      textArea = nextSection.find('.editor.tracker_markup.description'),
-      existingData = textArea.val(),
-      ev = new jQuery.Event('keyup'), // jshint ignore:line
-      coffeeText = "[intern]: <> ",
-      internDataString,
-      newData;
-
-  ev.which = 13;
-  ev.keyCode = 13;
-
-  if (existingData.indexOf(coffeeText) >= 0) {
-    var startPosition = existingData.indexOf(coffeeText),
-        endPosition   = existingData.indexOf(')', startPosition) + 1;
-
-    var initialString = existingData.substr(startPosition, endPosition - startPosition);
-    var internDataObject = JSON.parse(JSON.stringify(eval(initialString.substr(coffeeText.length))));
-
-    internDataObject.coffeeCount++;
-
-    internDataString = '[intern]: <> (' + JSON.stringify(internDataObject) + ')';
-
-    newData = existingData.replace(initialString, internDataString);
-  } else {
-    newData = existingData + '\n\n[intern]: <> ({"coffeeCount": 1})';
-  }
-
-  nextSection.find('.rendered_description').trigger('click');
-
-  textArea.val(newData);
-
-  nextSection.find('button[id^="story_description_done_"]').trigger('click');
-
-  e.preventDefault();
 }
 
 function createFeatureTemplate() {
