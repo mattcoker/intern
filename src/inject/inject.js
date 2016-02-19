@@ -2,11 +2,18 @@ function checkForEditBar() {
   var cS = document.querySelector('.clone_story'),
       templateBtn = document.createElement('button'),
       coffeeBtn = document.createElement('button'),
-      ed = document.querySelector('.edit .controls');
+      ed = document.querySelector('.edit .controls'),
+      tasksHeader = document.querySelector('.edit .tasks_index h4');
 
   if (!ed) { return; }
   if ($(ed).find('.story_template').length) { return; }
   if ($(ed).find('.coffee_action').length) { return; }
+
+  if ($('button.addDod', $(tasksHeader).parent()).length) { return; }
+  // if ($('button.addDod', $(tasksHeader).parent()).length < 1) {
+    tasksHeader.insertAdjacentHTML('afterEnd', '<button class="std addDod" title="Add Definition of Done tasks">Add DoD Tasks</button>');
+    $('button.addDod', $(tasksHeader).parent())[0].addEventListener('click', generateTasks, true);
+  // }
 
   ed.style.width = '332px';
   templateBtn.className = 'left_endcap hoverable story_template';
@@ -27,6 +34,22 @@ function checkForEditBar() {
   coffeeBtn.querySelector('img').style.marginLeft = '-2px';
   coffeeBtn.querySelector('img').style.marginTop = '1px';
   coffeeBtn.addEventListener('click', incrementCoffeeCount, true);
+}
+
+function generateTasks(e) {
+
+  var tasks = [
+      'HTD confirmed locally',
+      'Cross-browser testing passes',
+      'Automated tests pass',
+      'HTD confirmed on staging',
+    ];
+
+  for (task of tasks) {
+    document.querySelector('.edit .tasks_new textarea').value = task;
+    document.querySelector('.edit .tasks_new button').click();
+  }
+
 }
 
 function incrementCoffeeCount(e) {
