@@ -34,6 +34,14 @@ Below is a list of the expected behavior in several scenarios:
 - Custom template creation
 - Automatic tagging based on template completion
 
+### Contribute
+-----
+
+- To make modifications, fork me and create pull requests
+- Be sure to be running only 1 copy of this extension while developing
+- The meat of everything is in ./src/inject/inject.js
+- Click Reload on the extension in Chrome > Extensions and reload the Pivotal Tracker project page to see your changes
+
 ### Attribution
 -----
 
